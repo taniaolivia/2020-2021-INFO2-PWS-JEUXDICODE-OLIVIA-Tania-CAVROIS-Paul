@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Back Office Admin{% endblock %}
+
+{% block body %}
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">BOA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Évènements
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{{ path('listevts') }}">Tous les évènements</a>
+                            <a class="dropdown-item" href="{{ path('listevt2') }}">Tous les évènements 2020</a>
+                            <a class="dropdown-item" href="{{ path('listevttitre') }}">Intro Symfony</a>
+                        </div>
+                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Membres
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{{ path('listemembre') }}">Tous les membres</a>
+                            </div>
+                        </li>
+
+                </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            </div>
+        </nav>
+
+        <div class="jumbotron jumbotron-fluid">
+             <div class="container" style="height: 100px; margin-top: -4rem;">
+                 <h1 class="display-4">Back Office Admin</h1>
+                 <p>Application d'administration des jeuxdicode</p>
+             </div>
+        </div>
+
+    <div class="container" style="margin-top: -4rem;">
+    <div class="row">
+        <div class="col-md-4">
+            <H2>Prochain évènement</H2>
+            <p>{{ evt.titre }}</p>
+
+                <p><a class="btn btn-success pull-right" href="{{ path('detailevt', {'id' : 1}) }}">Détail évènement</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>Les évènements passés :</h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Détail de l'événement</th>
+                    </tr>
+                    </thead>
+                <tbody>
+
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Introduction symfony</td>
+                        <td>En ligne</td>
+                        <td><a href="{{ path('detailevtpass', {'id' : 1}) }}"><button type="button" class="btn btn-success">Détail</button></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Introduction docker</td>
+                        <td>En ligne</td>
+                        <td><a href="{{ path('detailevtpass', {'id' : 2}) }}"><button type="button" class="btn btn-success">Détail</button></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Introduction docker1</td>
+                        <td>En ligne</td>
+                        <td><a href="{{ path('detailevtpass', {'id' : 3}) }}"><button type="button" class="btn btn-success">Détail</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h4>Les propositions :</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Table heading</th>
+                    <th scope="col">Table heading</th>
+                    <th scope="col">Table heading</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td><button type="button" class="btn btn-success">Détail</button></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td><button type="button" class="btn btn-success">Détail</button></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Table cell</td>
+                    <td>Table cell</td>
+                    <td><button type="button" class="btn btn-success">Détail</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container{
+        transform: scale(0.75);
+    }
+</style>
+{% endblock %}

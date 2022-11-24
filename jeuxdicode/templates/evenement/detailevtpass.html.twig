@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des évènements passés{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <ul>
+            {% for evt in EvenementChoisi %}
+                <h1>Titre : {{ evt.titre }}</h1>
+                <h2>Nombre max participants : {{ evt.nbpartmax }}</h2>
+                <h2>Adresse : {{ evt.adresse }}</h2>
+            {% endfor %}
+            {% for session in listeSessions %}
+                <h1>Session : {{ session.titre }}</h1>
+                <h2>Auteur : {{ session.description }}</h2>
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}

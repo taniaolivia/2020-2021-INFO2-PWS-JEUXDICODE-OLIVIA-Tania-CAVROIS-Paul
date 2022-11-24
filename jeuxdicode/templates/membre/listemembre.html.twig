@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des membres de l'association{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Liste des membres de l'association</h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Tel</th>
+                    <th scope="col">Adresse mail</th>
+                </thead>
+                {% for membre in membres %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ membre.id }}</th>
+                            <td>{{ membre.nom }}</td>
+                            <td>{{ membre.prenom }}</td>
+                            <td>{{ membre.tel }}</td>
+                            <td>{{ membre.adressemail }}</td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

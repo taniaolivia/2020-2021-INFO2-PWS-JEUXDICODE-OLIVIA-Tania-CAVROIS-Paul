@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  app:
+    build: 
+      args: 
+        APP_DOCUMENT_ROOT: /var/www/html/jeuxdicode/public
+      context: ./build/apachephp
+    image: iutlr-info-apache-php7.4-symfony5.1-demo
+    container_name: iutlr-info-apache-php7.4-symfony5.1-demo
+    ports:
+      - "9999:80"
+    volumes:
+      - ./jeuxdicode:/var/www/html/jeuxdicode:delegated
+    networks:
+      - back-network
+  bd:
+    build:
+      context: build/mysql
+    image: iutlr-info-mysql8-demo
+    container_name: iutlr-info-mysql8-demo
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql:delegated
+    environment:
+      MYSQL_DATABASE: dbdemo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo
+      MYSQL_ROOT_PASSWORD: demoroot
+    networks:
+      - back-network
+networks:
+  back-network: 
+    driver: bridge
